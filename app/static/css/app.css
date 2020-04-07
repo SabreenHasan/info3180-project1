@@ -1,0 +1,121 @@
+body {
+    padding-top: 40px;
+    background-color: F1EEE7;
+}
+
+h3 {
+    font-weight: bold;
+}
+
+nav {
+    background-color: B78854;
+}
+
+.error {
+    color: red;
+}
+
+.grid {
+    background-color: #e6f2ff;
+}
+
+.main {
+    border-top: 10px solid #0066ff;
+    height: auto;
+    width: auto;
+}
+
+.navbar a {
+    text-align: center;
+    color: white;
+    padding: 10px;
+    font-size: 15px;
+}
+
+.navbar a:hover {
+    background-color: F7C793;
+    color: black;
+}
+
+#bio {
+    text-align: justify;
+}
+
+#buttons {
+    columns: 2;
+}
+
+#emailImg, #locationImg2, #date_createdImg {
+    height: 20px;
+    width: 20px;
+}
+
+#followButton {
+    border-radius: 5px;
+    background-color: #0066ff;
+    color: white;
+    height: 30px;
+    width: 130px;
+}
+
+#gender_box, #location_box, #email_box, #date_created_box {
+    width: 50px;
+}
+
+#gender, #location {
+    height: 10px;
+    width: 10px;
+}
+
+#info {
+    border-bottom: 1px solid black;
+}
+
+#itemList {
+    border-radius: 3%;
+	padding-bottom: 0px;
+	padding-left: 20px;
+	padding-top: 10px;
+	padding-right: 20px;
+	height: 100px;
+	width: 500px;
+	border-top: 10px solid #0066ff;
+	border-right: 2px solid #e0e0d1;
+	border-bottom: 2px solid #e0e0d1;
+	border-left: 2px solid #e0e0d1;
+	columns: 3;
+	align-items: center;
+}
+
+#name_for_user {
+    font-weight: bold;
+}
+
+#send_messageButton {
+    border-radius: 5px;
+    background-color: #00cc00;
+    color: white;
+    height: 30px;
+    width: 130px;
+}
+
+#userPic {
+	max-height : 100px;
+	max-width: 100px;
+	transform: rotate(90deg);
+	margin: 10px;
+}
+
+#userPic2 {
+    max-height : 200px;
+    max-width: 200px;
+    margin: 15px;
+}
+
+#viewbutton, #submitButton {
+    border-radius: 5px;
+    background-color: #00cc00;
+    color: white;
+    height: 25px;
+    width: 130px;
+}

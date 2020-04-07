@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block main %}
+  {% include 'flash_messages.html' %}
+  
+  <div class= "grid">      
+    {% for user_image in user_images %}
+      {% if user.image_name == user_image %}
+        <div class="main">    
+          <div > 
+            <img id="userPic2" src="{{url_for('static', filename='profilePic/'+user_image)}}" alt="User's photo">
+          </div>
+          <div id="bodySection2">
+            <h2>{{ user.firstname }} {{ user.lastname }}</h2>
+            <p><img id="emailImg" src="{{url_for(static/css/205347.png)}}"></img>{{ user.email }}</p>
+            <p><img id="locationImg2" src="{{url_for(static/css/81107.png)}}"></img>{{ user.location }}</p>
+            <p><img id="date_createdImg" src="{{url_for(static/css/848143.png)}}"></img>Joined on {{ user.date_created.strftime("%B %d, %Y") }}</p>
+          </div>
+          <div id="bio"></div>              
+            <h2>About me</h2>
+            <p>{{ user.biography }}</p>                                
+          </div>              
+          <div id="buttons">
+            <button type="button" id="send_messageButton">Send Message</button>
+            <button type="button" id="followButton">Follow</button>
+          </div> 
+        </div>
+      {% endif %}
+    {% endfor %}           
+  </div>  
+{% endblock %}
