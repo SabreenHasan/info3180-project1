@@ -5,9 +5,8 @@ Werkzeug Documentation:  http://werkzeug.pocoo.org/documentation/
 This file creates your application.
 """
 
-from app import app, db
+from app import app, db, filefolder
 from flask import render_template, request, redirect, url_for, flash, session, abort, send_from_directory
-from flask_login import login_user, logout_user, current_user, login_required
 from app.forms import LoginForm
 from app.models import UserProfile
 from werkzeug.utils import secure_filename
@@ -50,7 +49,7 @@ def profile():
         email = form.email.data
         biography = form.biography.data
         s = form.upload.data
-        filename = secure.filename(s.filename)
+        filename = secure_filename(s.filename)
         user = UserProfile(firstname = firstname, lastname = lastname, gender = gender, email = email, location = location, biography = biography, image_name=filename, date_created=now)
         db.session.add(user)
         db.session.commit()
@@ -73,7 +72,7 @@ def profiles():
 @app.route('profile/<userID>')
 def user_profiles(userID):
     """Render the website's view all profiles page by the user's ID."""
-    user = UserProfile.query.filter_by(user_id=filename).first()
+    user = UserProfile.query.filter_by(user_id=userID).first()
     user_images = get_uploaded_images()
     return render_template('user_profile.html', user=user, user_images=user_images)
 
@@ -83,10 +82,6 @@ def send_text_file(file_name):
     """Send your static text file."""
     file_dot_text = file_name + '.txt'
     return app.send_static_file(file_dot_text)
-
-@login_manager.user_loader
-def load_user(user_id):
-    return user.get(user_id)
 
 
 @app.route('/login', methods = ['POST', 'GET'])
@@ -105,13 +100,6 @@ def login():
   
     return render_template('login.html', error=error)
 
-
-@app.route('/logout')
-@login_required
-def logout():
-    session.pop('logged_in', None)
-    flash('You were logged out')
-    return redirect(url_for('login')) 
 
 @app.after_request
 def add_header(response):
@@ -135,6 +123,7 @@ def flash_errors(form):
     for field, errors in form.errors.items():
         for error in errors:
             flash(u"Error in the %s field - %s" % (getattr(form, field).label.text, error), 'danger')
+ 
  
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0", port="8080")

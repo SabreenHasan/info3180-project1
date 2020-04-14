@@ -7,7 +7,7 @@ class UserProfile(db.Model):
     gender = db.Column(db.String(10))
     email = db.Column(db.String(80))
     location = db.Column(db.String(100))
-    biograhy = db.Column(db.Text)
+    biography = db.Column(db.Text)
     image_name = db.Column(db.String(80))
     date_created = db.Column(db.DateTime)
 
